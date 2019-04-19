@@ -1,7 +1,13 @@
 <template>
   <div id="app">
     <Header></Header>
-    <QuestionBox></QuestionBox>
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col sm="6" offset="3">
+          <QuestionBox :currentQuestion="questions[index]"></QuestionBox>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -14,6 +20,21 @@ export default {
   components: {
     Header,
     QuestionBox
+  },
+  data() {
+    return {
+      questions: [],
+      index: 0
+    };
+  },
+  mounted: function() {
+    fetch("https://opentdb.com/api.php?amount=10&category=27&type=multiple", {
+      method: "GET"
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.questions = data.results;
+      });
   }
 };
 </script>
