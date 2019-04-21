@@ -13,18 +13,20 @@
         </b-col>
       </b-row>
     </b-container>
+    <LineGraph></LineGraph>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
 import QuestionBox from "./components/QuestionBox.vue";
-
+import LineGraph from "./components/LineGraph.vue";
 export default {
   name: "app",
   components: {
     Header,
-    QuestionBox
+    QuestionBox,
+    LineGraph
   },
   data() {
     return {
